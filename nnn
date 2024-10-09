@@ -1,8 +1,62 @@
-Fill the 3-liter jug completely:
+%water jug
+water_jug(X,Y):-
+    X > 4, Y < 3,
+    write('4L Jug iS Overflowing....').
 
-Now you have 0 liters in the 4-liter jug and 3 liters in the 3-liter jug.
-(4L jug: 0, 3L jug: 3)
-Pour the 3 liters from the 3-liter jug into the 4-liter jug:
+water_jug(X,Y):-
+    X < 4, Y > 3,
+    write('3L Jug is Overflowing....').
+water_jug(X,Y):-
+    X > 4, Y > 3,
+    write('Both water jugs are Over flowing....').
 
-Now the 4-liter jug contains 3 liters, and the 3-liter jug is empty.
-(4L jug: 3, 3L jug: 0)
+water_jug(X, Y):-
+    (
+      X=:=0,Y=:=0, nl,
+      write('4L:4 & 3L:0 (Action: Fill 4L Jug.)'),
+      XX is 4,
+      water_jug(XX,Y)
+    );
+    (
+      X=:=0,Y=:=0, nl,
+      write('4L:0 & 3L:3 (Action: Fill 3L Jug.)'),
+      YY is 3,
+      water_jug(X,YY)
+    );
+    (
+        X=:=0, Y=:=3, nl,
+        write('4L:0 & 3L:3 (Action: Pour water From 3L tO 4l.)'),
+        XX is Y, YY is Y-Y,
+        water_jug(XX,YY)
+
+    );
+    (
+        X=:=3, Y=:=0,nl,
+        write('4L:3 & 3L:0 (Action: Fill 3L Jug with water)'),
+        YY is 3,
+        water_jug(X,YY)
+    );
+    (
+        X=:=3, Y=:=3,nl,
+        write('4L:3 & 3L:3 (Action: Pour water from 3L -> 4L, Untill 4L Fill)'),
+        XX is X + (4-Y), YY is Y-1,
+        water_jug(XX,YY)
+    );
+    (
+       X=:=4, Y=:=2,nl,
+       write('4L:4 & 3L:2 (Action: Empty 4L.)'),
+       XX is 0,
+       water_jug(XX,Y)
+    );
+    (
+      X=:=0, Y=:=2,nl,
+      write('4L:0 & 3L:2 (Action: Pour 3L water into 4L)'),
+      XX is Y, YY is 0,
+      water_jug(XX, YY)
+    );
+
+    (
+      X=:=2, Y=:=0,nl,
+      write('4L:2 & 3L:0 (Action: Goal Reached)')
+    ).
+
