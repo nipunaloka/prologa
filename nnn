@@ -1,0 +1,8 @@
+Fill the 3-liter jug completely:
+
+Now you have 0 liters in the 4-liter jug and 3 liters in the 3-liter jug.
+(4L jug: 0, 3L jug: 3)
+Pour the 3 liters from the 3-liter jug into the 4-liter jug:
+
+Now the 4-liter jug contains 3 liters, and the 3-liter jug is empty.
+(4L jug: 3, 3L jug: 0)
