@@ -60,3 +60,17 @@ water_jug(X, Y):-
       write('4L:2 & 3L:0 (Action: Goal Reached)')
     ).
 
+%looping
+looping(0).
+looping(N):-
+    N > 0,
+    write('Looping..'),nl,
+    N1 is N - 1,
+    looping(N1).
+
+count(11).
+count(N):-
+    N< 11,
+    write(N),nl,
+    N1 is N + 2,
+    count(N1).
